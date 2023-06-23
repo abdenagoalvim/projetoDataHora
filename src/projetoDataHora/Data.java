@@ -4,7 +4,7 @@ public class Data {
 	private int dia;
 	private int mes;
 	private int ano;
-	String mascara = "DD/MM/AAAA";
+	private String mascara = "DD/MM/AAAA";
 	
 	public Data() {
 	}
@@ -59,6 +59,34 @@ public class Data {
 
 	public void setMascara(String mascara) {
 		this.mascara = mascara;
+	}
+
+	@Override
+	public String toString() {
+		String msc = this.mascara;
+		String[] meses1 = {"janeiro", "fevereiro", "março", "abril", "maio", "junho", 
+                  		   "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"};
+		String[] meses2 = {"jan", "fev", "mar", "abr", "mai", "jun", 
+						   "jul", "ago", "set", "out", "nov", "dez"};
+		String sDia = Integer.toString(this.dia);
+		if (this.dia < 10) {
+			 sDia = "0" + sDia;
+		}
+		String sMes = Integer.toString(this.mes);
+		if (this.mes < 10) {
+			 sMes = "0" + sMes;
+		}
+		
+		msc = msc.replaceAll("DD", sDia);
+		msc = msc.replaceAll("D", Integer.toString(dia));
+		msc = msc.replaceAll("MMMM", meses1[mes-1]);
+		msc = msc.replaceAll("MMM", meses2[mes-1]);
+		msc = msc.replaceAll("MM", sMes);
+		msc = msc.replaceAll("M", Integer.toString(mes));
+		msc = msc.replaceAll("AAAA", Integer.toString(ano));
+		msc = msc.replaceAll("AA", Integer.toString(ano%100));
+		
+		return msc;
 	}
 	
 }
