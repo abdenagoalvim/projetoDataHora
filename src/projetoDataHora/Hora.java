@@ -10,9 +10,9 @@ public class Hora {
 	}
 
 	public Hora(int hor, int min, int seg) {
-		this.hor = hor;
-		this.min = min;
-		this.seg = seg;
+		this.setHor(hor);
+		this.setMin(min);
+		this.setSeg(seg);
 	}
 
 	public int getHor() {
@@ -20,7 +20,11 @@ public class Hora {
 	}
 
 	public void setHor(int hor) {
-		this.hor = hor;
+		if ((hor < 0) || (hor > 23)) {
+			System.out.println("Hora inválida!!!");
+		} else {
+			this.hor = hor;
+		}
 	}
 
 	public int getMin() {
@@ -28,7 +32,11 @@ public class Hora {
 	}
 
 	public void setMin(int min) {
-		this.min = min;
+		if ((min < 0) || (min > 59)) {
+			System.out.println("Minuto inválido!!!");
+		} else {
+			this.min = min;
+		}
 	}
 
 	public int getSeg() {
@@ -36,7 +44,11 @@ public class Hora {
 	}
 
 	public void setSeg(int seg) {
-		this.seg = seg;
+		if ((seg < 0) || (seg > 59)) {
+			System.out.println("Segundo inválido!!");
+		} else {
+			this.seg = seg;
+		}
 	}
 
 	public String getMascara() {
