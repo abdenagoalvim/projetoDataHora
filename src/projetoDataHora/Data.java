@@ -76,6 +76,14 @@ public class Data {
 		if (this.mes < 10) {
 			 sMes = "0" + sMes;
 		}
+		/* outra forma de incluir o zero a direita para os dias e meses menores que 10
+		 * é através do método format da classe DecimalFormat. Veja os exemplos:
+		 * String sDia = new DecimalFormat("00").format(dia);
+		 * String sMes = new DecimalFormat("00").format(mes);
+		 * Nesse caso será necessário inportar a classe DecimalFormat:
+		 * import java.text.DecimalFormat;
+		 */ 
+		
 		
 		msc = msc.replaceAll("DD", sDia);
 		msc = msc.replaceAll("D", Integer.toString(dia));
