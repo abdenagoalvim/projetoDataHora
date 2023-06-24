@@ -4,12 +4,12 @@ public class Hora {
 	private int hor;
 	private int min;
 	private int seg;
-	String mascara = "HH/MM";
+	private String mascara = "HH:MM";
 	
 	public Hora() {
 	}
 
-	public Hora(int hor, int min, int seg) {
+	public Hora(int hor, int min) {
 		this.setHor(hor);
 		this.setMin(min);
 		this.setSeg(seg);
@@ -59,4 +59,39 @@ public class Hora {
 		this.mascara = mascara;
 	}
 	
+	@Override
+	public String toString() {
+		String msc = this.mascara;
+		String sHor = Integer.toString(this.hor);
+		if (this.hor < 10) {
+			 sHor = "0" + sHor;
+		}
+		String sMin = Integer.toString(this.min);
+		if (this.min < 10) {
+			 sMin = "0" + sMin;
+		}
+		String sSeg = Integer.toString(this.seg);
+		if (this.seg < 10) {
+			sSeg = "0" +sSeg;
+		}
+		/* outra forma de incluir o zero a direita para as horas, minutos e segundos menores que 10
+		 * é através do método format da classe DecimalFormat. Veja os exemplos:
+		 * String sHor = new DecimalFormat("00").format(hor);
+		 * String sMin = new DecimalFormat("00").format(min);
+		 * String sMeg = new DecimalFormat("00").format(seg);
+		 * Nesse caso será necessário inportar a classe DecimalFormat:
+		 * import java.text.DecimalFormat;
+		 */ 
+		
+		
+		msc = msc.replaceAll("HH", sHor);
+		msc = msc.replaceAll("H", Integer.toString(this.hor));
+		msc = msc.replaceAll("MM", sMin);
+		msc = msc.replaceAll("M", Integer.toString(this.min));
+		msc = msc.replaceAll("SS", sSeg);
+		msc = msc.replaceAll("S", Integer.toString(this.seg));
+		
+		return msc;
+	}
+
 }
